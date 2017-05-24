@@ -10,6 +10,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import { BarChart } from './BarChart';
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -73,7 +74,9 @@ class RankingScreen extends React.Component {
     return (
       <View style={{flex: 1}}>
         <Text style={styles.main_title}>GO WILD!</Text>
-        {names}{icons}{distances}
+        <BackgroundImage>
+          {names}{icons}{distances}
+        </BackgroundImage>
         </View>
     );
 
@@ -223,7 +226,7 @@ const GoWild = StackNavigator({
   Ranking: { screen: RankingScreen },
   CatchIt: { screen: CatchItScreen },
   Achievements: { screen: AchievementsScreen },
-  Learnings: { screen: LearningsScreen },
+  Learnings: { screen: BarChart },
   Settings: { screen: SettingsScreen },
   About: { screen: AboutScreen },
 });
