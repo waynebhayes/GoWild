@@ -8,9 +8,11 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  Dimensions
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import { BarChart } from './BarChart';
+import { RankingScreen } from './RankingScreen';
+
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -18,10 +20,13 @@ class HomeScreen extends React.Component {
   };
   render() {
     const { navigate } = this.props.navigation;
+    var styles = require('./styles');
     return (
       <View style={{flex: 1, flexDirection: 'column',}}>
         <Text style={styles.main_title}>GO WILD!</Text>
         <BackgroundImage>
+            <ScrollView style={{width: '100%', height:'100%'}}>
+            <View style={{alignItems:'center'}}>
             <TouchableOpacity style={styles.button} onPress={() => navigate('Ranking', { user: 'Remo' })}>
                <Text style={styles.button_text}>RANKING</Text>
             </TouchableOpacity>
@@ -40,64 +45,61 @@ class HomeScreen extends React.Component {
             <TouchableOpacity style={styles.button} onPress={() => navigate('About', { user: 'Remo' })}>
                <Text style={styles.button_text}>ABOUT</Text>
             </TouchableOpacity>
+            </View>
+            </ScrollView>
         </BackgroundImage>
       </View>
     );
   }
 }
 
-class RankingScreen extends React.Component {
-  // Nav options can be defined as a function of the screen's props:
-  static navigationOptions = ({ navigation }) => ({
-    title: 'RANKING',
-  });
-  render() {
-    // The screen's current route is passed in to `props.navigation.state`:
-    const { params } = this.props.navigation.state;
-
-    var customData = require('./customData.json');
-    var user_names = customData.user_name;
-    var user_distances = customData.user_distance;
-
-    //const numbers = [1, 2, 3, 4, 5];
-    let names = customData.name.map((name, i) => {
-      return ( <View key={i} style={{flex: 1}}><Text>{name}</Text></View> ); }
-     );
-    let icons = customData.icon.map((icon, i) => {
-      return ( <View key={i} style={{flex: 1}}><Text>{icon}</Text></View> ); }
-    );
-    let distances = customData.distance.map((distance, i) => {
-      return ( <View key={i} style={{flex: 1}}><Text>{distance}</Text></View> ); }
-    );
-
-
-    return (
-      <View style={{flex: 1}}>
-        <Text style={styles.main_title}>GO WILD!</Text>
-        <BackgroundImage>
-          {names}{icons}{distances}
-        </BackgroundImage>
-        </View>
-    );
 
     // https://medium.com/@lennyboyatzis/run-rabbit-run-path-tracking-with-react-native-and-the-geolocation-api-299227a9e241
 
-  }
-}
 
 class CatchItScreen extends React.Component {
   // Nav options can be defined as a function of the screen's props:
-  static navigationOptions = ({ navigation }) => ({
+  static navigationOptions = {
     title: 'CATCH IT!',
-  });
+  };
   render() {
     // The screen's current route is passed in to `props.navigation.state`:
     const { params } = this.props.navigation.state;
+    var styles = require('./styles');
+    var customData = require('./customData.json');
+    var maxDistance = 0;
+    var screenSize = 1000;
+
+    for (i = 0; i < customData.animals.length; i++) {
+        currDistance = parseInt(customData.animals[i].distance);
+        if (currDistance>maxDistance) {
+        maxDistance=currDistance;}
+    }
+
+        let animals = customData.animals.map((animal, i) => {
+
+          xPos = 100+((screenSize-200)*parseInt(animal.distance)/maxDistance);
+          return (
+          <View style={{position: 'absolute', left: xPos, width: 100, height: 100}} key={i}>
+            <Text style={styles.text}>{animal.name}{"\n"}{animal.distance}</Text>
+          </View> ); }
+        );
+
     return (
       <View style={{flex: 1}}>
         <Text style={styles.main_title}>GO WILD!</Text>
-        <ScrollView horizontal='True' style={{width: '100%', height:'100%'}}>
-        <Image style={{width: 1949}} source={require('./images/background.png')} />
+        <ScrollView horizontal={true} style={{width: '100%', height:'100%'}}>
+        <View style={{
+                flex: 1,
+                flexDirection: 'column',
+                justifyContent: 'flex-end',
+                alignItems: 'flex-start',
+              }}>
+
+        <Image style={{width: screenSize}} source={require('./images/background.png')} />
+        <View style={{height:200, position: 'absolute', left: 0, bottom: 0}}>{animals}</View>
+         </View>
+
         </ScrollView>
       </View>
     );
@@ -110,6 +112,7 @@ class AchievementsScreen extends React.Component {
   };
   render() {
     const { navigate } = this.props.navigation;
+    var styles = require('./styles');
     return (
       <View style={{flex: 1, flexDirection: 'column',}}>
         <Text style={styles.main_title}>GO WILD!</Text>
@@ -126,6 +129,7 @@ class LearningsScreen extends React.Component {
   };
   render() {
     const { navigate } = this.props.navigation;
+        var styles = require('./styles');
     return (
       <View style={{flex: 1, flexDirection: 'column',}}>
         <Text style={styles.main_title}>GO WILD!</Text>
@@ -142,6 +146,7 @@ class SettingsScreen extends React.Component {
   };
   render() {
     const { navigate } = this.props.navigation;
+        var styles = require('./styles');
     return (
       <View style={{flex: 1, flexDirection: 'column',}}>
         <Text style={styles.main_title}>GO WILD!</Text>
@@ -158,6 +163,7 @@ class AboutScreen extends React.Component {
   };
   render() {
     const { navigate } = this.props.navigation;
+        var styles = require('./styles');
     return (
       <View style={{flex: 1, flexDirection: 'column',}}>
         <Text style={styles.main_title}>GO WILD!</Text>
@@ -170,6 +176,8 @@ class AboutScreen extends React.Component {
 
 class BackgroundImage extends React.Component {
     render() {
+
+            var styles = require('./styles');
         return (
             <Image source={require('./images.background.png')}
                   style={styles.backgroundImage}>
@@ -179,54 +187,12 @@ class BackgroundImage extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({
-  button: {
-     width: '50%',
-     padding: 10,
-     margin: 10,
-     alignItems: 'center',
-     backgroundColor: '#ddf1fa',
-     borderRadius: 50,
-  },
-  button_text: {
-     textAlign: 'center',
-     alignItems: 'center',
-     color: '#3a7580',
-     fontSize: 18,
-  },
-  main_title: {
-     textAlign: 'center',
-     color: '#fff',
-     fontSize: 50,
-     backgroundColor: '#3a7580',
-  },
-  sub_title: {
-     textAlign: 'center',
-     color: '#000',
-     fontSize: 30,
-     backgroundColor: '#fff',
-  },
-  backgroundImage: {
-     alignItems: 'center',
-     flex: 1,
-     width: null,
-     height: null,
-     resizeMode: 'cover'
-  },
-  text: {
-     textAlign: 'center',
-     color: 'white',
-     backgroundColor: 'rgba(0,0,0,0)',
-     fontSize: 32
-  },
-});
-
 const GoWild = StackNavigator({
   Home: { screen: HomeScreen },
   Ranking: { screen: RankingScreen },
   CatchIt: { screen: CatchItScreen },
   Achievements: { screen: AchievementsScreen },
-  Learnings: { screen: BarChart },
+  Learnings: { screen: LearningsScreen },
   Settings: { screen: SettingsScreen },
   About: { screen: AboutScreen },
 });
