@@ -64,6 +64,7 @@ class CatchItScreen extends React.Component {
   };
   render() {
     // The screen's current route is passed in to `props.navigation.state`:
+    const { navigate } = this.props.navigation;
     const { params } = this.props.navigation.state;
     var styles = require('./styles');
     var customData = require('./customData.json');
@@ -81,7 +82,9 @@ class CatchItScreen extends React.Component {
           xPos = 100+((screenSize-200)*parseInt(animal.distance)/maxDistance);
           return (
           <View style={{position: 'absolute', left: xPos, width: 100, height: 100}} key={i}>
-            <Text style={styles.text}>{animal.name}{"\n"}{animal.distance}</Text>
+             <TouchableOpacity onPress={() => navigate('Animal', { user: animal.name })}>
+                <Text style={styles.text}>{animal.name}{"\n"}{animal.distance}</Text>
+             </TouchableOpacity>
           </View> ); }
         );
 
@@ -101,6 +104,26 @@ class CatchItScreen extends React.Component {
          </View>
 
         </ScrollView>
+      </View>
+    );
+  }
+}
+
+class AnimalScreen extends React.Component {
+    static navigationOptions = ({ navigation }) => ({
+      title: `Chat with ${navigation.state.params.user}`,
+      });
+  render() {
+    const { navigate } = this.props.navigation;
+        var styles = require('./styles');
+     const { params } = this.props.navigation.state;
+    return (
+
+      <View style={{flex: 1, flexDirection: 'column',}}>
+        <Text style={styles.main_title}>GO WILD!</Text>
+        <BackgroundImage>
+            <Text>Chat with {params.user}</Text>
+        </BackgroundImage>
       </View>
     );
   }
@@ -191,6 +214,7 @@ const GoWild = StackNavigator({
   Home: { screen: HomeScreen },
   Ranking: { screen: RankingScreen },
   CatchIt: { screen: CatchItScreen },
+  Animal: { screen: AnimalScreen },
   Achievements: { screen: AchievementsScreen },
   Learnings: { screen: LearningsScreen },
   Settings: { screen: SettingsScreen },
