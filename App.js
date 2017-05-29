@@ -13,7 +13,6 @@ import {
 import { StackNavigator } from 'react-navigation';
 import { RankingScreen } from './RankingScreen';
 
-
 class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'START',
@@ -24,7 +23,7 @@ class HomeScreen extends React.Component {
     return (
       <View style={{flex: 1, flexDirection: 'column',}}>
         <Text style={styles.main_title}>GO WILD!</Text>
-        <BackgroundImage>
+        <BackgroundImage name="./images/background.png">
             <ScrollView style={{width: '100%', height:'100%'}}>
             <View style={{alignItems:'center'}}>
             <TouchableOpacity style={styles.button} onPress={() => navigate('Ranking', { user: 'Remo' })}>
@@ -98,11 +97,9 @@ class CatchItScreen extends React.Component {
                 justifyContent: 'flex-end',
                 alignItems: 'flex-start',
               }}>
-
         <Image style={{width: screenSize}} source={require('./images/background.png')} />
         <View style={{height:200, position: 'absolute', left: 0, bottom: 0}}>{animals}</View>
          </View>
-
         </ScrollView>
       </View>
     );
@@ -197,12 +194,14 @@ class AboutScreen extends React.Component {
   }
 }
 
-class BackgroundImage extends React.Component {
+export class BackgroundImage extends React.Component {
     render() {
 
-            var styles = require('./styles');
+        var styles = require('./styles');
+        var xx = this.props.name;
+        var xx = './images/background.png';
         return (
-            <Image source={require('./images.background.png')}
+            <Image source={require('./images/background.png')}
                   style={styles.backgroundImage}>
                   {this.props.children}
             </Image>

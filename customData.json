@@ -1,6 +1,9 @@
-{ "animals": [
-{ "name":"LEO", "icon":"lion.png", "distance":"50" },
-{ "name":"LUNA", "icon":"leopard.png", "distance":"130" },
-{ "name":"ETO", "icon":"leopard.png", "distance":"200" },
-{ "name":"NALA", "icon":"kiwi.png", "distance":"420" }
-]}
+{
+  "animals": [
+    { "name":"LEO", "icon":"lion.png", "distance":"50" },
+    { "name":"LUNA", "icon":"leopard.png", "distance":"130" },
+    { "name":"ETO", "icon":"leopard.png", "distance":"200" },
+    { "name":"NALA", "icon":"kiwi.png", "distance":"420" }
+  ],
+  "user": { "name":"Remo", "icon":"user.png", "distance":"45" }
+}

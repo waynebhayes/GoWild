@@ -80,19 +80,22 @@ var maxDistance = 0;
     );
 
   }
-}
 
+  }
 
 class BackgroundImage extends React.Component {
     render() {
-       var styles = require('./styles');
+
+        var styles = require('./styles');
         return (
-            <Image source={require('./images.background.png')}
+            <Image source={require('./images/background.png')}
                   style={styles.backgroundImage}>
                   {this.props.children}
             </Image>
         )
     }
 }
+
+
 
 
