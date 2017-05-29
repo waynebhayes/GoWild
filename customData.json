@@ -1,9 +1,9 @@
 {
   "animals": [
-    { "name":"LEO", "icon":"lion.png", "distance":"420" },
-    { "name":"LUNA", "icon":"leopard.png", "distance":"200" },
+    { "name":"LEO", "icon":"moose.png", "distance":"420" },
+    { "name":"LUNA", "icon":"wolf.png", "distance":"200" },
     { "name":"ETO", "icon":"leopard.png", "distance":"130" },
-    { "name":"NALA", "icon":"kiwi.png", "distance":"100" }
+    { "name":"NALA", "icon":"bear.png", "distance":"100" }
   ],
   "user": { "name":"Remo", "icon":"user.png", "distance":"109" }
 }

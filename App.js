@@ -14,6 +14,7 @@ import {
 import { StackNavigator } from 'react-navigation';
 import { RankingScreen } from './RankingScreen';
 import { MapScreen, AnimalScreen } from './MapScreen';
+import { AchievementsScreen } from './AchievementsScreen';
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -57,23 +58,6 @@ class HomeScreen extends React.Component {
 
     // https://medium.com/@lennyboyatzis/run-rabbit-run-path-tracking-with-react-native-and-the-geolocation-api-299227a9e241
 
-
-class AchievementsScreen extends React.Component {
-  static navigationOptions = {
-    title: 'ACHIEVEMENTS',
-  };
-  render() {
-    const { navigate } = this.props.navigation;
-    var styles = require('./styles');
-    return (
-      <View style={{flex: 1, flexDirection: 'column',}}>
-        <Text style={styles.main_title}>GO WILD!</Text>
-        <BackgroundImage>
-        </BackgroundImage>
-      </View>
-    );
-  }
-}
 
 class LearningsScreen extends React.Component {
   static navigationOptions = {

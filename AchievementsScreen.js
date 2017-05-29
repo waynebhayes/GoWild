@@ -1,10 +1,10 @@
 import React from 'react';
 import {Animated, Component, View, StyleSheet, Text, Image, Dimensions, ScrollView} from 'react-native'
 
-export class RankingScreen extends React.Component {
+export class AchievementsScreen extends React.Component {
 
   static navigationOptions = ({ navigation }) => ({
-    title: 'RANKING',
+    title: 'ACHIEVEMENTS',
   });
 
   constructor () {
@@ -79,7 +79,7 @@ class BackgroundImage extends React.Component {
 
         var styles = require('./styles');
         return (
-            <Image source={require('./images/background_mountain.png')}
+            <Image source={require('./images/background_clouds.png')}
                   style={styles.backgroundImage}>
                   {this.props.children}
             </Image>

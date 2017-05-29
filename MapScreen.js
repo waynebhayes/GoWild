@@ -14,13 +14,13 @@ export class MapScreen extends React.Component {
      var numberOfAnimals = customData.animals.length;
      var initialValues = [];
      for (i = 0; i < numberOfAnimals; i++) {
-         initialValues.push(new Animated.Value(20));
+         initialValues.push(new Animated.Value(200));
      }
      this.state = {
        values: initialValues
      }
      this.springValue = new Animated.Value(0.3);
-     this.userValue = new Animated.Value(20);
+     this.userValue = new Animated.Value(200);
    }
 
    spring () {
@@ -41,7 +41,7 @@ export class MapScreen extends React.Component {
      var styles = require('./styles');
      var customData = require('./customData.json');
      var maxDistance = 0;
-     var screenSize = 1000;
+     var screenSize = 1940;
      var isCatchable = []
      var userDistance = parseInt(customData.user.distance);
 
@@ -62,15 +62,15 @@ export class MapScreen extends React.Component {
      }
 
      Animated.parallel(customData.animals.map((animal, i) => {
-           xPos = 100+((screenSize-200)*parseInt(animal.distance)/maxDistance);
+           xPos = 200+((screenSize-400)*parseInt(animal.distance)/maxDistance);
            return Animated.timing(this.state.values[i], {toValue: xPos, duration: 2000, delay: 500})
              })).start()
 
      this.spring();
 
      // user walk
-     xPos = 100+((screenSize-200)*userDistance/maxDistance);
-     this.springValue.setValue(20)
+     xPos = 200+((screenSize-400)*userDistance/maxDistance);
+     this.springValue.setValue(200)
         Animated.timing(
              this.userValue, {toValue: xPos, duration: 2000, delay: 2500}
        ).start();
@@ -78,8 +78,10 @@ export class MapScreen extends React.Component {
      let animals = customData.animals.map((animal, i) => {
        if (isCatchable[i]) {
        return (
-           <Animated.View style={{position: 'absolute', left: this.state.values[i], width: 100, height: 100, transform: [{scale: this.springValue}]}} key={i}>
+           <Animated.View style={{position: 'absolute', left: this.state.values[i], width: 100, height: 200, transform: [{scale: this.springValue}]}} key={i}>
+              <Image source={require('./images/bear.png')} style={styles.animalImage} />
               <TouchableOpacity onPress={() => navigate('Animal', { user: animal.name })}>
+
                  <Text style={styles.text}>{animal.name}{"\n"}{animal.distance}</Text>
               </TouchableOpacity>
            </Animated.View>
@@ -87,7 +89,8 @@ export class MapScreen extends React.Component {
            }
        else {
              return (
-           <Animated.View style={{position: 'absolute', left: this.state.values[i], width: 100, height: 100}} key={i}>
+           <Animated.View style={{position: 'absolute', left: this.state.values[i], width: 100, height: 200}} key={i}>
+                 <Image source={require('./images/moose.png')} style={styles.animalImage} />
                  <Text style={styles.text}>{animal.name}{"\n"}{animal.distance}</Text>
            </Animated.View> );
        }
@@ -105,8 +108,8 @@ export class MapScreen extends React.Component {
                }}>
          <Image style={{width: screenSize}} source={require('./images/background.png')} />
          <View style={{height:200, position: 'absolute', left: 0, bottom: 0}}>
-
-                       <Animated.View style={{position: 'absolute', left: this.userValue, width: 100, height: 100}} key={i}>
+                       <Animated.View style={{position: 'absolute', left: this.userValue, width: 100, height: 200}} key={i}>
+                              <Image source={require('./images/wolf.png')} style={styles.animalImage} />
                              <Text style={styles.text}>{customData.user.name}{"\n"}{customData.user.distance}</Text>
                        </Animated.View>
                        {animals}
@@ -143,7 +146,7 @@ class BackgroundImage extends React.Component {
 
         var styles = require('./styles');
         return (
-            <Image source={require('./images/background.png')}
+            <Image source={require('./images/background_forest.png')}
                   style={styles.backgroundImage}>
                   {this.props.children}
             </Image>

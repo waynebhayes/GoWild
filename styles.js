@@ -37,6 +37,11 @@ var styles = React.StyleSheet.create({
      resizeMode: 'cover',
      padding: 20
   },
+  animalImage: {
+       alignItems: 'center',
+       flex: 1,
+       resizeMode: 'stretch'
+    },
   text: {
      textAlign: 'center',
      color: 'white',
