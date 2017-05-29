@@ -37,8 +37,8 @@ export class RankingScreen extends React.Component {
     }
     Animated.parallel(animals.map((animal, i) => {
       var window = Dimensions.get('window');
-      screenWidth = window.width;
-      newWidth = 20+((screenWidth-40)*parseInt(distances[i])/maxDistance);
+      screenWidth = window.width-40;
+      newWidth = screenWidth*parseInt(distances[i])/maxDistance;
       return timing(this.state["values"][i], {toValue: newWidth, duration: 3000, delay: 500})
     })).start()
   }
@@ -52,8 +52,8 @@ export class RankingScreen extends React.Component {
     let animals = customData.animals.map((animal, i) => {
       return (
       <View key={i}>
+        <Text style={styles.ranking_text}>{animal.name}</Text>
         <Animated.View style={[styles.bar, {width: values[i]}]} />
-        <Text style={styles.text}>{animal.name}</Text>
       </View> ); }
     );
 
@@ -62,7 +62,7 @@ export class RankingScreen extends React.Component {
         <Text style={styles.main_title}>GO WILD!</Text>
         <BackgroundImage>
                     <ScrollView style={{width: '100%', height:'100%'}}>
-                    <View style={{alignItems:'center'}}>
+                    <View style={{alignItems:'flex-start'}}>
           {animals}
           </View>
           </ScrollView>

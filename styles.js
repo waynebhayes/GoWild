@@ -34,7 +34,8 @@ var styles = React.StyleSheet.create({
      flex: 1,
      width: null,
      height: null,
-     resizeMode: 'cover'
+     resizeMode: 'cover',
+     padding: 20
   },
   text: {
      textAlign: 'center',
@@ -42,12 +43,17 @@ var styles = React.StyleSheet.create({
      backgroundColor: 'rgba(0,0,0,0)',
      fontSize: 32
   },
+  ranking_text: {
+       textAlign: 'left',
+       color: 'white',
+       backgroundColor: 'rgba(0,0,0,0)',
+       fontSize: 32
+  },
     bar: {
       alignSelf: 'flex-start',
       borderRadius: 10,
       height: 20,
       backgroundColor: '#FFFFFF',
-      margin: 10
     }
 })
 
