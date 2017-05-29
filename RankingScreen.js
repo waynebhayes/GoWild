@@ -10,6 +10,7 @@ export class RankingScreen extends React.Component {
   constructor () {
     super()
 
+    // initialization for animation
     var customData = require('./customData.json');
     var numberOfAnimals = customData.animals.length;
     var initialValues = [];
@@ -22,32 +23,22 @@ export class RankingScreen extends React.Component {
   }
 
   handeleAnimation () {
-
-      var customData = require('./customData.json');
-      var distances = [];
-
-var maxDistance = 0;
-
-      let animals = customData.animals.map((animal, i) => {
-        distances.push(animal.distance);}
-       );
-
-           for (i = 0; i < customData.animals.length; i++) {
-               currDistance = parseInt(distances[i]);
-               if (currDistance>maxDistance) {
-               maxDistance=currDistance;}
-           }
-
-
+    var customData = require('./customData.json');
+    var distances = [];
+    var maxDistance = 0;
     const timing = Animated.timing
 
-
+    let animals = customData.animals.map((animal, i) => {
+      distances.push(animal.distance);});
+    for (i = 0; i < customData.animals.length; i++) {
+      currDistance = parseInt(distances[i]);
+      if (currDistance>maxDistance) {
+        maxDistance=currDistance;}
+    }
     Animated.parallel(animals.map((animal, i) => {
-            var window = Dimensions.get('window');
-        screenWidth = window.width;
-        newWidth = 20+((screenWidth-40)*parseInt(distances[i])/maxDistance);
-
-
+      var window = Dimensions.get('window');
+      screenWidth = window.width;
+      newWidth = 20+((screenWidth-40)*parseInt(distances[i])/maxDistance);
       return timing(this.state["values"][i], {toValue: newWidth, duration: 3000, delay: 500})
     })).start()
   }
@@ -55,7 +46,7 @@ var maxDistance = 0;
   render () {
    const values = this.state.values
    var styles = require('./styles');
-    this.handeleAnimation();
+   this.handeleAnimation();
 
     var customData = require('./customData.json');
     let animals = customData.animals.map((animal, i) => {

@@ -5,5 +5,5 @@
     { "name":"ETO", "icon":"leopard.png", "distance":"200" },
     { "name":"NALA", "icon":"kiwi.png", "distance":"420" }
   ],
-  "user": { "name":"Remo", "icon":"user.png", "distance":"45" }
+  "user": { "name":"Remo", "icon":"user.png", "distance":"429" }
 }

@@ -8,10 +8,12 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
-  Dimensions
+  Dimensions,
+  Animated
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { RankingScreen } from './RankingScreen';
+import { MapScreen, AnimalScreen } from './MapScreen';
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -29,7 +31,7 @@ class HomeScreen extends React.Component {
             <TouchableOpacity style={styles.button} onPress={() => navigate('Ranking', { user: 'Remo' })}>
                <Text style={styles.button_text}>RANKING</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => navigate('CatchIt', { user: 'Remo' })}>
+            <TouchableOpacity style={styles.button} onPress={() => navigate('Map', { user: 'Remo' })}>
                <Text style={styles.button_text}>CATCH IT!</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={() => navigate('Achievements', { user: 'Remo' })}>
@@ -55,76 +57,6 @@ class HomeScreen extends React.Component {
 
     // https://medium.com/@lennyboyatzis/run-rabbit-run-path-tracking-with-react-native-and-the-geolocation-api-299227a9e241
 
-
-class CatchItScreen extends React.Component {
-  // Nav options can be defined as a function of the screen's props:
-  static navigationOptions = {
-    title: 'CATCH IT!',
-  };
-  render() {
-    // The screen's current route is passed in to `props.navigation.state`:
-    const { navigate } = this.props.navigation;
-    const { params } = this.props.navigation.state;
-    var styles = require('./styles');
-    var customData = require('./customData.json');
-    var maxDistance = 0;
-    var screenSize = 1000;
-
-    for (i = 0; i < customData.animals.length; i++) {
-        currDistance = parseInt(customData.animals[i].distance);
-        if (currDistance>maxDistance) {
-        maxDistance=currDistance;}
-    }
-
-        let animals = customData.animals.map((animal, i) => {
-
-          xPos = 100+((screenSize-200)*parseInt(animal.distance)/maxDistance);
-          return (
-          <View style={{position: 'absolute', left: xPos, width: 100, height: 100}} key={i}>
-             <TouchableOpacity onPress={() => navigate('Animal', { user: animal.name })}>
-                <Text style={styles.text}>{animal.name}{"\n"}{animal.distance}</Text>
-             </TouchableOpacity>
-          </View> ); }
-        );
-
-    return (
-      <View style={{flex: 1}}>
-        <Text style={styles.main_title}>GO WILD!</Text>
-        <ScrollView horizontal={true} style={{width: '100%', height:'100%'}}>
-        <View style={{
-                flex: 1,
-                flexDirection: 'column',
-                justifyContent: 'flex-end',
-                alignItems: 'flex-start',
-              }}>
-        <Image style={{width: screenSize}} source={require('./images/background.png')} />
-        <View style={{height:200, position: 'absolute', left: 0, bottom: 0}}>{animals}</View>
-         </View>
-        </ScrollView>
-      </View>
-    );
-  }
-}
-
-class AnimalScreen extends React.Component {
-    static navigationOptions = ({ navigation }) => ({
-      title: `Chat with ${navigation.state.params.user}`,
-      });
-  render() {
-    const { navigate } = this.props.navigation;
-        var styles = require('./styles');
-     const { params } = this.props.navigation.state;
-    return (
-
-      <View style={{flex: 1, flexDirection: 'column',}}>
-        <Text style={styles.main_title}>GO WILD!</Text>
-        <BackgroundImage>
-            <Text>Chat with {params.user}</Text>
-        </BackgroundImage>
-      </View>
-    );
-  }
-}
 
 class AchievementsScreen extends React.Component {
   static navigationOptions = {
@@ -212,7 +144,7 @@ export class BackgroundImage extends React.Component {
 const GoWild = StackNavigator({
   Home: { screen: HomeScreen },
   Ranking: { screen: RankingScreen },
-  CatchIt: { screen: CatchItScreen },
+  Map: { screen: MapScreen },
   Animal: { screen: AnimalScreen },
   Achievements: { screen: AchievementsScreen },
   Learnings: { screen: LearningsScreen },
