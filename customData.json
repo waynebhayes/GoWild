@@ -1,9 +1,10 @@
 {
   "animals": [
-    { "name":"LEO", "icon":"moose.png", "distance":"420" },
-    { "name":"LUNA", "icon":"wolf.png", "distance":"200" },
-    { "name":"ETO", "icon":"leopard.png", "distance":"130" },
-    { "name":"NALA", "icon":"bear.png", "distance":"100" }
+    { "name":"ALF", "species":"moose", "distance":"420" },
+    { "name":"FOX", "species":"fox", "distance":"345" },
+    { "name":"LUNA", "species":"wolf", "distance":"307" },
+    { "name":"LEO", "species":"leopard", "distance":"244" },
+    { "name":"NALA", "species":"bear", "distance":"110" }
   ],
-  "user": { "name":"Remo", "icon":"user.png", "distance":"109" }
+  "user": { "name":"REMO", "species":"human", "distance":"132" }
 }

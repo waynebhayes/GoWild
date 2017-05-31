@@ -50,10 +50,35 @@ export class RankingScreen extends React.Component {
 
     var customData = require('./customData.json');
     let animals = customData.animals.map((animal, i) => {
+
+
+         switch(animal.species) {
+             case 'bear':
+                 var icon = require('./images/bear.png');
+                 break;
+             case 'wolf':
+                 var icon = require('./images/wolf.png');
+                 break;
+             case 'leopard':
+                 var icon = require('./images/leopard.png');
+                 break;
+             case 'moose':
+                 var icon = require('./images/moose.png');
+                 break;
+             case 'fox':
+                 var icon = require('./images/fox.png');
+                 break;
+             default:
+                 var icon = require('./images/user.png');
+         }
+
       return (
       <View key={i}>
+      <View style={{flexDirection: 'row'}} key={i+10000}>
+        <Image source={icon} style={{width: 32, height:32, marginRight: 20}} />
         <Text style={styles.ranking_text}>{animal.name}</Text>
-        <Animated.View style={[styles.bar, {width: values[i]}]} />
+      </View>
+        <Animated.View style={[styles.bar, {marginBottom: 20, width: values[i]}]} />
       </View> ); }
     );
 
