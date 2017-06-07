@@ -101,7 +101,7 @@ export class MapScreen extends React.Component {
        return (
            <Animated.View style={{position: 'absolute', left: this.state.values[i], width: 150, height: 250, transform: [{scale: this.springValue}]}} key={i}>
               <Image source={icon} style={styles.animalImage} />
-              <TouchableOpacity onPress={() => navigate('Animal', { user: animal.name })}>
+              <TouchableOpacity onPress={() => navigate('Animal', { animalName: animal.name, animalSpecies: animal.species, animalDescription: animal.description })}>
                  <Text style={[styles.text,{width: 150, height:118}]}>{animal.name}{"\n"}{animal.distance}</Text>
               </TouchableOpacity>
            </Animated.View>
@@ -144,18 +144,43 @@ export class MapScreen extends React.Component {
 
  export class AnimalScreen extends React.Component {
      static navigationOptions = ({ navigation }) => ({
-       title: `Chat with ${navigation.state.params.user}`,
+       title: `YOU CAUGHT ${navigation.state.params.animalName}!`,
        });
    render() {
      const { navigate } = this.props.navigation;
-         var styles = require('./styles');
+     var styles = require('./styles');
       const { params } = this.props.navigation.state;
+
+      switch(params.animalSpecies) {
+          case 'bear':
+              var icon = require('./images/bear.png');
+              break;
+          case 'wolf':
+              var icon = require('./images/wolf.png');
+              break;
+          case 'leopard':
+              var icon = require('./images/leopard.png');
+              break;
+          case 'moose':
+              var icon = require('./images/moose.png');
+              break;
+          case 'fox':
+              var icon = require('./images/fox.png');
+              break;
+          default:
+              var icon = require('./images/user.png');
+      }
+
      return (
 
        <View style={{flex: 1, flexDirection: 'column',}}>
          <Text style={styles.main_title}>GO WILD!</Text>
          <BackgroundImage>
-             <Text>Chat with {params.user}</Text>
+           <Image source={icon} style={styles.caughtAnimalImage} />
+           <Text style={styles.text}>{params.animalName}{"\n"}</Text>
+           <View style={styles.main_box}>
+             <Text style={styles.main_text}>{"LEARNINGS\n"}{params.animalDescription}</Text>
+           </View>
          </BackgroundImage>
        </View>
      );

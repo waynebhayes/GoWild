@@ -1,10 +1,10 @@
 {
   "animals": [
-    { "name":"ALF", "species":"moose", "distance":"420" },
-    { "name":"FOX", "species":"fox", "distance":"345" },
-    { "name":"LUNA", "species":"wolf", "distance":"307" },
-    { "name":"LEO", "species":"leopard", "distance":"244" },
-    { "name":"NALA", "species":"bear", "distance":"110" }
+    { "name":"BRUNO", "species":"moose", "distance":"420", "description": "" },
+    { "name":"FOX", "species":"fox", "distance":"345", "description": "" },
+    { "name":"LUNA", "species":"wolf", "distance":"307", "description": "" },
+    { "name":"LEO", "species":"leopard", "distance":"244", "description": "" },
+    { "name":"NALA", "species":"bear", "distance":"110", "description": "Brown bears are large bears with the widest distribution of any living ursid. The species is distributed across much of northern Eurasia and North America. It is one of the two largest terrestrial carnivorans alive today." }
   ],
-  "user": { "name":"REMO", "species":"human", "distance":"132" }
+  "user": { "name":"REMO", "species":"human", "distance":"132", "description": "" }
 }

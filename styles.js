@@ -8,7 +8,7 @@ var styles = React.StyleSheet.create({
      padding: 10,
      margin: 10,
      alignItems: 'center',
-     backgroundColor: '#ddf1fa',
+     backgroundColor: '#ffffff',
      borderRadius: 50,
   },
   button_text: {
@@ -44,6 +44,10 @@ var styles = React.StyleSheet.create({
      height: 112,
      resizeMode: 'contain'
     },
+  caughtAnimalImage: {
+     alignItems: 'center',
+     width: 150,
+    },
   text: {
      textAlign: 'center',
      color: 'white',
@@ -61,7 +65,21 @@ var styles = React.StyleSheet.create({
       borderRadius: 10,
       height: 20,
       backgroundColor: '#FFFFFF',
-    }
+    },
+  main_box: {
+     width: '100%',
+     padding: 10,
+     margin: 10,
+     alignItems: 'center',
+     backgroundColor: '#ffffff',
+     borderRadius: 30,
+  },
+  main_text: {
+     textAlign: 'center',
+     alignItems: 'center',
+     color: '#3a7580',
+     fontSize: 18,
+  }
 })
 
 module.exports = styles;
