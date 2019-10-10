@@ -1,4 +1,6 @@
 ## recommended set up
+Update: I deactived AWS server to avoid further billing, but it wouldn't be too hard to deploy the backend and point frontend to it.
+Database connection and other configs are located at setup.py. I do recomment going over Django tutorial before taking over.
 
 We currently use AWS ec2 server, NGINX/Uwsgi/Django/MySQL stack for backend, and freenom for DNS.
 For database testing MySQL workbench is recommend.
