@@ -1,0 +1,8 @@
+# for pycharm
+*.pyc
+__pycache__
+venv/
+.idea/
+
+
+
