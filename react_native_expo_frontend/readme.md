@@ -1,7 +1,9 @@
-Tasks doc:
+## Frontend 
 
-https://docs.google.com/document/d/1EP5CJqI9VFZKsZT7EFOl3k6zOzuDmkJVziWDcY3HneM/edit?usp=sharing
+This project is built with a react native framework called `expo` https://expo.io/learn for easier preview and test.
 
-Design Images and Sketch File
+Before working on any part of code, I highly recommend going over tutorial of `react native` and `expo`. 
 
-https://drive.google.com/drive/folders/163NOvYBPFmC144QASIK4dDGW3cx4KdeO?usp=sharing
+To start it locally, first install node js, then install expo and all dependencies with `npm install`, then init it with `expo start` to open a web client which contains further instruction on how to view it in mobile device. 
+
+UI framework is called `native base`, docs: https://docs.nativebase.io/ 
