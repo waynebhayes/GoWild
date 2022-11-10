@@ -10,7 +10,7 @@
     "axios": "^0.21.2",
     "eslint": "^6.6.0",
     "expo": "^46.0.14",
-    "moment": "^2.29.2",
+    "moment": "^2.29.4",
     "native-base": "^2.12.1",
     "react": "^16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
