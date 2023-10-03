@@ -9,7 +9,7 @@
   "dependencies": {
     "axios": "^0.21.2",
     "eslint": "^6.6.0",
-    "expo": "^46.0.14",
+    "expo": "^49.0.13",
     "moment": "^2.29.4",
     "native-base": "^2.12.1",
     "react": "^16.11.0",
@@ -28,7 +28,7 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0",
+    "babel-preset-expo": "^9.5.2",
     "schedule": "^0.4.0"
   },
   "private": true
